@@ -1,0 +1,21 @@
+@import "./bases/variables.css";
+@import "./layout/sidebar.css";
+@import "./layout/navbar.css";
+@import "./components/buttons.css";
+@import "./components/forms.css";
+@import "./components/table.css";
+@import "./components/modal.css";
+@import "./components/timeline.css";
+@import "./components/searchable-select.css";
+@import "./bases/reset.css";
+
+@import "./pages/dashboard.css";
+@import "./pages/clients.css";
+@import "./pages/mesures.css";
+@import "./pages/commandes.css";
+@import "./pages/paiements.css";
+@import "./pages/utilisateurs.css";
+@import "./pages/parametres.css";
+@import "./pages/auth.css";
+@import "./pages/login.css";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');

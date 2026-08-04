@@ -50,7 +50,6 @@ const createClient = (req, res) => {
         });
       }
 
-      // Insertion uniquement si le numéro n'existe pas
       db.query(
         'INSERT INTO clients (nom, prenom, telephone, adresse, date_creation) VALUES (?, ?, ?, ?, NOW())',
         [nom, prenom, telephone, adresse],

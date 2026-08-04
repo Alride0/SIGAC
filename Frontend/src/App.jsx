@@ -1,106 +1,45 @@
-import { FiBell, FiLogOut, FiMenu } from 'react-icons/fi';
-import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './pages/Login.jsx';
+import ForgotPassword from './pages/ForgotPassword.jsx';
+import ResetPassword from './pages/ResetPassword.jsx';
 import Clients from './pages/Clients.jsx';
 import Mesures from './pages/Mesures.jsx';
 import Commandes from './pages/Commandes.jsx';
 import Paiements from './pages/Paiements.jsx';
 import Dashboard from './pages/Dashboard.jsx';
-import './global.css';
-
+import AuthLayout from './layouts/AuthLayout.jsx';
+import AppLayout from './layouts/AppLayout.jsx';
+import Parametres from './pages/Parametres.jsx';
+import Utilisateurs from './pages/Utilisateurs.jsx';
+import AdminRoute from './components/AdminRoute.jsx';
+import "./styles/index.css";
 const App = () => {
+  const isAuthenticated = !!localStorage.getItem('token');
+
   return (
     <BrowserRouter>
-      <div className="app-layout">
-        {/* SIDEBAR À GAUCHE */}
-        <aside className="sidebar">
-          {/* Logo en haut */}
-          <div className="sidebar-logo">
-            <img src="/logo-sidebar.png" alt="Gen's Couture Logo" className="logo-img" />
-          </div>
+      <Routes>
+        {/* ROUTES PUBLIQUES (AuthLayout) */}
+        <Route element={<AuthLayout />}>
+  <Route path="/login" element={<Login />} />
+  <Route path="/forgot-password" element={<ForgotPassword />} />
+  <Route path="/reset-password/:token" element={<ResetPassword />} />
+</Route>
 
-          {/* Navigation */}
-          <nav className="sidebar-nav">
-            <NavLink 
-              className={({isActive}) => isActive ? "nav-item active" : "nav-item"} 
-              to="/clients"
-            >
-              Clients
-            </NavLink>
-            <NavLink 
-              className={({isActive}) => isActive ? "nav-item active" : "nav-item"} 
-              to="/mesures"
-            >
-              Mesures
-            </NavLink>
-            <NavLink 
-              className={({isActive}) => isActive ? "nav-item active" : "nav-item"} 
-              to="/commandes"
-            >
-              Commande
-            </NavLink>
-            <NavLink 
-              className={({isActive}) => isActive ? "nav-item active" : "nav-item"} 
-              to="/paiements"
-            >
-              Paiements
-            </NavLink>
-            <NavLink 
-              className={({isActive}) => isActive ? "nav-item active" : "nav-item"} 
-              to="/"
-            >
-              Dashboard
-            </NavLink>
-          </nav>
+        {/* ROUTES PROTÉGÉES (AppLayout) */}
+        <Route element={isAuthenticated ? <AppLayout /> : <Navigate to="/login" />}>
+          <Route path="/" element={<AdminRoute> <Dashboard /> </AdminRoute>}/>
+          <Route path="/clients" element={<Clients />} />
+          <Route path="/mesures" element={<Mesures />} />
+          <Route path="/commandes" element={<Commandes />} />
+          <Route path="/paiements" element={<AdminRoute> <Paiements /> </AdminRoute>}/>
+          <Route path="/parametres" element={<Parametres />} />
+          <Route path="/utilisateurs" element={<AdminRoute> <Utilisateurs /> </AdminRoute>}/>
+        </Route>
 
-          {/* Illustration en bas */}
-          <div className="sidebar-illustration">
-            <img src="/mannequin.png" alt="Mannequin Couture" className="mannequin-img" />
-          </div>
-
-          {/* Profil utilisateur en bas */}
-          <div className="sidebar-profile">
-            <div className="profile-avatar">O</div>
-            <div className="profile-info">
-              <p className="profile-name">Oloumidé</p>
-              <p className="profile-role">Administrateur</p>
-            </div>
-          </div>
-        </aside>
-
-        {/* CONTENU PRINCIPAL (Navbar top + Pages) */}
-        <div className="main-content">
-          {/* Navbar en haut */}
-          {/* Navbar en haut */}
-<header className="top-navbar">
-  <div className="navbar-left">
-    <button className="menu-burger">
-      <FiMenu size={24} />
-    </button>
-  </div>
-  <div className="navbar-right">
-    <button className="notification-btn">
-      <FiBell size={24} />
-      <span className="notification-badge">9</span>
-    </button>
-    <button className="logout-btn">
-      Déconnexion
-      <FiLogOut size={20} />
-    </button>
-  </div>
-</header>
-
-          {/* Pages */}
-          <main className="page-content">
-            <Routes>
-              <Route path="/clients" element={<Clients />} />
-              <Route path="/mesures" element={<Mesures />} />
-              <Route path="/commandes" element={<Commandes />} />
-              <Route path="/paiements" element={<Paiements />} />
-              <Route path="/" element={<Dashboard />} />
-            </Routes>
-          </main>
-        </div>
-      </div>
+        {/* Redirect par défaut */}
+        <Route path="*" element={<Navigate to={isAuthenticated ? "/" : "/login"} />} />
+      </Routes>
     </BrowserRouter>
   );
 };

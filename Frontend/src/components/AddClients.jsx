@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import {FiUser,FiPhone,FiMapPin} from "react-icons/fi";
 import api from '../services/api.js';
 
-const AddClients = ({ setClients, editingClient, setEditingClient }) => {
+const AddClients = ({ setClients, editingClient, setEditingClient,onSuccess }) => {
     const [nom, setNom] = useState("");
     const [prenom, setPrenom] = useState("");
     const [telephone, setTelephone] = useState("");
@@ -16,7 +17,7 @@ const AddClients = ({ setClients, editingClient, setEditingClient }) => {
             setTelephone(editingClient.telephone);
             setAdresse(editingClient.adresse);
         } else {
-        resetForm();
+        resetForm(); 
     }
     }, [editingClient]);
 
@@ -53,6 +54,9 @@ if (!telephoneRegex.test(telephone.trim())) {
             const response = await api.get("/clients");
             setClients(response.data.results);
             resetForm();
+            if (onSuccess) {
+                             onSuccess();
+                       }
         }
         catch (error) {
     setFormError("Erreur lors de l'enregistrement. Vérifiez les informations saisies.");
@@ -70,21 +74,33 @@ if (!telephoneRegex.test(telephone.trim())) {
   <form className="clients-form" onSubmit={handleSubmit}>
     <div className="form-grid">
       <div className="form-group">
-        <label>Nom complet</label>
-        <input type="text" name="nom" value={nom} onChange={(e) => setNom(e.target.value)} required />
+        <label><FiUser />Nom</label>
+
+        <div>
+          <input type="text" name="nom"  value={nom} onChange={(e) => setNom(e.target.value)} required />
+        </div>
       </div>
       <div className="form-group">
-        <label>Prénom</label>
-        <input type="text" name="prenom" value={prenom} onChange={(e) => setPrenom(e.target.value)} required />
+        <label><FiUser />Prénom</label>
+
+        <div>
+          <input type="text" name="prenom"  value={prenom}onChange={(e) => setPrenom(e.target.value)}required/>
+        </div>
       </div>
       <div className="form-group">
-        <label>Téléphone</label>
-        <input type="text" name="telephone" value={telephone} onChange={(e) => setTelephone(e.target.value)} required />
+        <label><FiPhone />Téléphone</label>
+
+        <div>
+          <input type="text" name="telephone"  value={telephone} onChange={(e) => setTelephone(e.target.value)} required />
+        </div>
       </div>
       <div className="form-group">
-        <label>Adresse</label>
-        <input type="text" name="adresse" value={adresse} onChange={(e) => setAdresse(e.target.value)} required />
-      </div>
+        <label><FiMapPin />Adresse</label>
+
+        <div>
+          <input type="text" name="adresse"  value={adresse} onChange={(e) => setAdresse(e.target.value)} required />
+        </div>
+</div>
     </div>
 
     <div className="form-actions">

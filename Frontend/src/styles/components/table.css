@@ -1,0 +1,105 @@
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.clients-table {
+  width: 100%;
+  min-width: 500px;
+  border-collapse: collapse;
+  background-color: white;
+}
+.clients-table thead {
+  background-color: var(--color-primary);
+}
+.clients-table th {
+  color: white;
+  text-align: left;
+  padding:18px 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+}
+.clients-table td {
+  padding:18px 20px;
+  vertical-align:middle;
+  font-size: 0.9rem;
+  color: #555;
+  border-bottom: 1px solid #F0E8DC;
+  border-right: 1px solid #F0E8DC;
+}
+.clients-table th,
+.clients-table td{
+    vertical-align: middle;
+}
+.clients-table th:last-child,
+.clients-table td:last-child{
+    text-align: center;
+    width: 130px;
+}
+.clients-table tbody tr{
+    transition: background-color .25s ease;
+}
+
+.clients-table tbody tr:hover{
+    background:#FFFDF8;
+}
+.clients-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.actions-cell{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    height:100%;
+}
+
+.sortable {
+  cursor: pointer;
+  user-select: none;
+  padding: 0 !important;
+}
+
+.sortable:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sort-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 0.3rem;
+  opacity: 0.8;
+}
+
+.sort-icon:hover {
+  opacity: 1;
+}
+
+.client-name{
+margin:0;
+font-weight:600;
+color:var(--color-primary);
+}
+
+.client-name-cell{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.client-avatar{
+width:42px;
+height:42px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#FFF3CD;
+color:var(--color-primary);
+font-weight:700;
+font-size:1rem;
+}

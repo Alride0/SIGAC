@@ -1,0 +1,154 @@
+.btn-primary {
+  background-color: var(--color-secondary);
+  color: #333;
+  border: none;
+  padding: 0.75rem 3rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(247, 184, 1, 0.35);
+}
+
+.btn-reset {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-reset:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn-cancel {
+  background-color: transparent;
+  color: #777;
+  border: 1.5px solid #D8CFC2;
+  padding: 0.75rem 1.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btn-cancel:hover {
+  background-color: #F0E8DC;
+}
+
+.btn-pagination {
+  padding: 0.6rem 1rem;
+  background-color: white;
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-pagination:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.btn-pagination:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-page {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background-color: white;
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-page:hover {
+  border-color: var(--color-primary);
+  background-color: #FDF6EC;
+}stats
+
+.btn-page.active {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.btn-new-client {
+  padding: 0.75rem 1.2rem;
+  background-color: var(--color-secondary);
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-new-client:hover {
+  background-color: #F0A500;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(247, 184, 1, 0.3);
+}
+
+.btn-new-client:active {
+  transform: translateY(0);
+}
+.btn-icon {
+  background: none;
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.btn-edit {
+  color: var(--color-tertiary);
+  border-color: var(--color-tertiary);
+}
+
+.btn-edit:hover {
+  background-color: var(--color-tertiary);
+  color: white;
+  transform: scale(1.1);
+}
+
+.btn-delete {
+  color: #C0392B;
+  border-color: #C0392B;
+}
+
+.btn-delete:hover {
+  background-color: #C0392B;
+  color: white;
+  transform: scale(1.1);
+}

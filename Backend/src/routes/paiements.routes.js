@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/paiements.controller.js');
+router.get('/paiements', controller.getAllPaiements);
 router.get('/paiements/:commande_id', controller.getPaiementsByCommandes);
+router.get('/stats/paiements', controller.getPaiementsStats);
 router.post('/paiements/:commande_id', controller.addPaiement);
 router.patch('/paiements/:id', controller.updatePaiement);
 router.delete('/paiements/:id', controller.deletePaiement);
-module.exports = router; 
+module.exports = router;
