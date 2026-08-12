@@ -71,9 +71,14 @@ const login = (req, res) => {
       "view_commandes"
     ];
 
-    const token = jwt.sign(
-    { id: user.id, email: user.email, nom: user.nom, role: user.role },
-    process.env.JWT_SECRET || 'secret_key_temporaire',
+   const token = jwt.sign(
+    {
+        id: user.id,
+        email: user.email,
+        nom: user.nom,
+        role: user.role
+    },
+    process.env.JWT_SECRET,
     { expiresIn: '7d' }
 );
 
