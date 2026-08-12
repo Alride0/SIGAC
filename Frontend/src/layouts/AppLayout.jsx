@@ -105,7 +105,7 @@ const handleLogout = () => {
 
     <AnimatedNavItem>
 
-    <NavLink className={({ isActive }) => isActive ? "nav-item active" : "nav-item"} to="/paiments">
+    <NavLink className={({ isActive }) => isActive ? "nav-item active" : "nav-item"} to="/paiements">
 
         <FiHome size={18}/>
 
