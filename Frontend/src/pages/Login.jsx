@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiEye, FiEyeOff, FiLock, FiMail, FiShield, FiZap, FiScissors, FiSun, FiMoon } from 'react-icons/fi';
+import {FiEye,FiEyeOff,FiLock,FiMail,FiUser,FiSun,FiMoon} from "react-icons/fi";
 import api from '../services/api.js';
 
 const Login = () => {
@@ -24,6 +24,14 @@ const Login = () => {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
+}, []);
+useEffect(() => {
+    const savedEmail = localStorage.getItem("savedEmail");
+
+    if (savedEmail) {
+        setEmail(savedEmail);
+        setRememberMe(true);
+    }
 }, []);
 
   const handleSubmit = async (e) => {
@@ -98,7 +106,7 @@ const t = texts[language];
         <div className="login-card">
             <div className="login-header">
                 <button className="theme-toggle" onClick={() => setDarkMode(!darkMode)}>
-                    {darkMode ? <FiMoon size={22}/> : <FiSun size={22}/>}
+                    {darkMode ? <FiSun size={22} /> : <FiMoon size={22} />}
                 </button>
                 <select 
                     className="language-select"
@@ -128,9 +136,11 @@ const t = texts[language];
                 <form onSubmit={handleSubmit} className="login-form" autoComplete="off">
                     <div className="form-group">
                         <label>{t.emailLabel}</label>
-                        <div>
+                        <div className="input-wrapper">
+                            <FiUser className="input-icon" />
+
                             <input
-                                type="email"
+                                type="text"
                                 placeholder={t.emailPlaceholder}
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -143,24 +153,29 @@ const t = texts[language];
 
                     <div className="form-group">
                         <label>{t.password}</label>
-                        <div>
-                            <input
-                                type={showPassword ? "text" : "password"}
-                                placeholder={t.passwordPlaceholder}
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
-                                autoComplete="new-password"
-                                className="form-input"
-                            />
-                            <button
-                                type="button"
-                                className="password-toggle"
-                                onClick={() => setShowPassword(!showPassword)}
-                            >
-                                {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
-                            </button>
-                        </div>
+                        <div className="input-wrapper">
+                                <FiLock className="input-icon" />
+
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder={t.passwordPlaceholder}
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                    autoComplete="new-password"
+                                    className="form-input"
+                                />
+
+                                <button
+                                    type="button"
+                                    className="password-toggle"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    {showPassword
+                                        ? <FiEyeOff size={18} />
+                                        : <FiEye size={18} />}
+                                </button>
+                            </div>
                     </div>
 
                     <div className="form-footer">
