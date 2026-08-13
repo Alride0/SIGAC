@@ -109,7 +109,7 @@ const t = texts[language];
                     <option value="en">English</option>
                 </select>
             </div>
-
+          
             <div className="login-form-container">
                 <div className="login-card-logo">
                     <img src="/new_img_logo.png" alt="Gens Couture" className="logo-img-small" />
