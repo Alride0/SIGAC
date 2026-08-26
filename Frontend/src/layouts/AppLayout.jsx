@@ -180,6 +180,10 @@ const handleLogout = () => {
 </div>
       </aside>
 
+      {sidebarCollapsed && (
+  <div className="sidebar-backdrop" onClick={() => setSidebarCollapsed(false)}></div>
+)}
+
      <div className={`main-content ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
         
         <header className="top-navbar">

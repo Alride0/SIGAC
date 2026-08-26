@@ -23,6 +23,13 @@
   overflow-y: auto;
 }
 
+@media (max-width: 768px) {
+  .main-content,
+  .main-content.sidebar-collapsed {
+    margin-left: 0;
+  }
+}
+
 
 
 
