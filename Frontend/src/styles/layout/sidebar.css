@@ -232,54 +232,9 @@ box-shadow: 0 0 10px #22C55E;
   margin: 1.2rem 0;
 }
 
-/* ===== MOBILE : sidebar en tiroir (off-canvas) ===== */
+/* La sidebar est réservée aux écrans desktop. */
 @media (max-width: 768px) {
   .sidebar {
-    width: 250px;
-    transform: translateX(-100%);
-    z-index: 1000;
-    transition: transform 0.3s ease;
-  }
-
-  /* Sur mobile, le bouton menu-burger (même state sidebarCollapsed)
-     sert maintenant à OUVRIR le tiroir plutôt qu'à le rétrécir. */
-  .sidebar.collapsed {
-    width: 250px;
-    padding: 1.5rem 1rem;
-    transform: translateX(0);
-  }
-
-  .sidebar.collapsed .logo-img,
-  .sidebar.collapsed .nav-item span,
-  .sidebar.collapsed .nav-section-title {
-    display: unset;
-  }
-
-  .sidebar.collapsed .sidebar-illustration,
-  .sidebar.collapsed .profile-info {
-    display: flex;
-  }
-
-  .sidebar.collapsed .nav-item {
-    justify-content: flex-start;
-    padding: 14px 18px;
-  }
-
-  .sidebar.collapsed .sidebar-profile {
-    justify-content: flex-start;
-    padding: 1rem;
-  }
-}
-.sidebar-backdrop {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .sidebar-backdrop {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    z-index: 900;
+    display: none;
   }
 }

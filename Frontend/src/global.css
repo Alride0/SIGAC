@@ -14,9 +14,6 @@
   transition: margin-left 0.3s ease;
 }
 
-.main-content.sidebar-collapsed {
-  margin-left: 80px;
-}
 .page-content {
   flex: 1;
   padding: 1.5rem 1rem;

@@ -7,10 +7,12 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   height: 70px;
   flex-shrink: 0;
+  position: relative;
+  z-index: 20;
 }
 
 .navbar-left {
-  display: flex;
+  display: none;
   align-items: center;
 }
 
@@ -93,4 +95,20 @@
 .logout-icon {
   display: flex;
   align-items: center;
+}
+
+.mobile-logo,
+.mobile-nav-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .top-navbar { height: 64px; padding: .75rem 1rem; gap: .75rem; }
+  .mobile-logo { display: block; width: 94px; height: auto; margin-right: auto; }
+  .menu-burger { display: flex; color: #fff; }
+  .logout-btn { border: 0; padding: .45rem; color: #fff; }
+  .logout-btn span { display: none; }
+  .mobile-nav-menu { display: flex; flex-direction: column; gap: .35rem; position: absolute; top: 64px; left: 0; right: 0; padding: .75rem 1rem 1rem; background: var(--color-primary); border-top: 1px solid rgba(255, 255, 255, .15); box-shadow: 0 12px 22px rgba(0, 0, 0, .2); }
+  .mobile-nav-item { display: flex; align-items: center; gap: .75rem; min-height: 44px; padding: .7rem .9rem; border-radius: 10px; color: #fff; font-weight: 600; text-decoration: none; }
+  .mobile-nav-item.active { background: var(--color-secondary); color: #2f1d1a; }
 }
