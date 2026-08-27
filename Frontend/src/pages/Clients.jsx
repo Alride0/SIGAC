@@ -157,7 +157,6 @@
     
     <div className="search-filter-bar">
       <div className="search-wrapper">
-        <FiSearch className="search-icon" size={18} />
         <input 
           type="text" 
           className="search-input" 

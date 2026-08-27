@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiArrowLeft, FiMail } from 'react-icons/fi';
+import { FiArrowLeft } from 'react-icons/fi';
 import api from '../services/api.js';
 
 const ForgotPassword = () => {
@@ -50,7 +50,6 @@ const ForgotPassword = () => {
           <div className="form-group">
             <label>Email</label>
             <div className="input-wrapper">
-              <FiMail className="input-icon" size={18} />
               <input
                 type="email"
                 value={email}

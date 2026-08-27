@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import api from '../services/api.js';
-import { FiUser, FiMail, FiLock, FiEye, FiEyeOff, FiShield } from 'react-icons/fi';
+import { FiUser, FiMail, FiShield } from 'react-icons/fi';
 
 const Parametres = () => {
     const [profile, setProfile] = useState(null);
@@ -9,8 +9,6 @@ const Parametres = () => {
     const [currentPassword, setCurrentPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
-    const [showCurrent, setShowCurrent] = useState(false);
-    const [showNew, setShowNew] = useState(false);
 
     const [submitting, setSubmitting] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
@@ -105,43 +103,34 @@ const Parametres = () => {
                         <div className="form-group">
                             <label>Mot de passe actuel</label>
                             <div className="input-wrapper">
-                                <FiLock className="input-icon" size={18} />
                                 <input
-                                    type={showCurrent ? "text" : "password"}
+                                    type="password"
                                     value={currentPassword}
                                     onChange={(e) => setCurrentPassword(e.target.value)}
                                     name="current-password-change"
                                     autoComplete="new-password"
                                 />
-                                <button type="button" className="password-toggle" onClick={() => setShowCurrent(!showCurrent)}>
-                                    {showCurrent ? <FiEyeOff size={18} /> : <FiEye size={18} />}
-                                </button>
                             </div>
                         </div>
 
                         <div className="form-group">
                             <label>Nouveau mot de passe</label>
                             <div className="input-wrapper">
-                                <FiLock className="input-icon" size={18} />
                                 <input
-                                    type={showNew ? "text" : "password"}
+                                    type="password"
                                     value={newPassword}
                                     onChange={(e) => setNewPassword(e.target.value)}
                                     name="new-password"
                                     autoComplete="new-password"
                                 />
-                                <button type="button" className="password-toggle" onClick={() => setShowNew(!showNew)}>
-                                    {showNew ? <FiEyeOff size={18} /> : <FiEye size={18} />}
-                                </button>
                             </div>
                         </div>
 
                         <div className="form-group">
                             <label>Confirmer le nouveau mot de passe</label>
                             <div className="input-wrapper">
-                                <FiLock className="input-icon" size={18} />
                                 <input
-                                    type={showNew ? "text" : "password"}
+                                    type="password"
                                     value={newPasswordConfirm}
                                     onChange={(e) => setNewPasswordConfirm(e.target.value)}
                                     name="new-password-confirmation"

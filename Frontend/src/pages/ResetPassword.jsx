@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
 import api from '../services/api.js';
 
 const ResetPassword = () => {
@@ -8,8 +7,6 @@ const ResetPassword = () => {
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -72,20 +69,12 @@ const ResetPassword = () => {
           <div className="form-group">
             <label>Nouveau mot de passe</label>
             <div className="input-wrapper">
-              <FiLock className="input-icon" size={18} />
               <input
-                type={showPassword ? "text" : "password"}
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <button
-                type="button"
-                className="password-toggle"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
-              </button>
             </div>
           </div>
 
@@ -112,20 +101,12 @@ const ResetPassword = () => {
           <div className="form-group">
             <label>Confirmer le mot de passe</label>
             <div className="input-wrapper">
-              <FiLock className="input-icon" size={18} />
               <input
-                type={showPasswordConfirm ? "text" : "password"}
+                type="password"
                 value={passwordConfirm}
                 onChange={(e) => setPasswordConfirm(e.target.value)}
                 required
               />
-              <button
-                type="button"
-                className="password-toggle"
-                onClick={() => setShowPasswordConfirm(!showPasswordConfirm)}
-              >
-                {showPasswordConfirm ? <FiEyeOff size={18} /> : <FiEye size={18} />}
-              </button>
             </div>
           </div>
 

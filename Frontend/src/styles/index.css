@@ -53,7 +53,7 @@
 }
 
 .search-input {
-  padding: 0 .95rem 0 2.8rem;
+  padding: 0 .95rem;
 }
 
 .form-group > input:not([type="checkbox"]):not([type="radio"]):hover,
@@ -88,6 +88,23 @@
   border-radius: 12px;
   background: #fff;
   transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+/* Un champ contenu dans un wrapper ne dessine jamais une seconde bordure. */
+.input-wrapper input {
+  width: 100%;
+  min-height: 0;
+  height: auto;
+  padding: .9rem 1rem;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+}
+
+.input-wrapper input:focus {
+  box-shadow: none;
+  transform: none;
 }
 
 .login-form input:-webkit-autofill,

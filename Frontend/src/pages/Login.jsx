@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {FiEye,FiEyeOff,FiLock,FiMail,FiUser,FiSun,FiMoon} from "react-icons/fi";
+import {FiLock,FiSun,FiMoon} from "react-icons/fi";
 import api from '../services/api.js';
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -138,8 +137,6 @@ const t = texts[language];
                     <div className="form-group">
                         <label>{t.emailLabel}</label>
                         <div className="input-wrapper">
-                            <FiUser className="input-icon" />
-
                             <input
                                 type="text"
                                 value={email}
@@ -154,10 +151,8 @@ const t = texts[language];
                     <div className="form-group">
                         <label>{t.password}</label>
                         <div className="input-wrapper">
-                                <FiLock className="input-icon" />
-
                                 <input
-                                    type={showPassword ? "text" : "password"}
+                                type="password"
                                 value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
@@ -165,15 +160,6 @@ const t = texts[language];
                                     className="form-input"
                                 />
 
-                                <button
-                                    type="button"
-                                    className="password-toggle"
-                                    onClick={() => setShowPassword(!showPassword)}
-                                >
-                                    {showPassword
-                                        ? <FiEyeOff size={18} />
-                                        : <FiEye size={18} />}
-                                </button>
                             </div>
                     </div>
 

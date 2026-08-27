@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { FiChevronDown, FiX, FiSearch, FiUser } from "react-icons/fi";
+import { FiChevronDown, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 
 const SearchableClientSelect = ({ clients, value, onChange, disabled = false }) => {
@@ -58,8 +58,6 @@ const SearchableClientSelect = ({ clients, value, onChange, disabled = false }) 
     className={`select-input ${isOpen ? "active" : ""} ${disabled ? "disabled" : ""}`}
     onClick={() => !disabled && setIsOpen(!isOpen)}>
         <div className="select-left">
-          <FiUser className="select-user-icon" />
-
           <div className="select-value">
             {selectedClient ? (
               <span>
@@ -99,8 +97,6 @@ const SearchableClientSelect = ({ clients, value, onChange, disabled = false }) 
             transition={{ duration: 0.22 }}>
 
             <div className="dropdown-search">
-              <FiSearch className="search-icon" />
-
               <input
                 type="text"
                 className="search-input"
