@@ -3,6 +3,11 @@ const db = require('../config/db');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+const databaseError = (res, error) => {
+  console.error('Erreur de base de données :', error);
+  return res.status(500).json({ error: "Le service de base de données est momentanément indisponible" });
+};
+
 
 const register = (req, res) => {
   const { nom, email, password, passwordConfirm } = req.body;
@@ -18,7 +23,7 @@ const register = (req, res) => {
 
   db.query('SELECT email FROM users WHERE email = ?', [email], async (error, results) => {
     if (error) {
-      return res.status(500).json({ error });
+      return databaseError(res, error);
     }
 
     if (results.length > 0) {
@@ -32,7 +37,7 @@ const register = (req, res) => {
       { nom, email, password: hashedPassword },
       (error, results) => {
         if (error) {
-          return res.status(500).json({ error });
+          return databaseError(res, error);
         }
 
         return res.status(201).json({ message: "Utilisateur créé avec succès" });
@@ -50,7 +55,7 @@ const login = (req, res) => {
 
   db.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) => {
     if (error) {
-      return res.status(500).json({ error });
+      return databaseError(res, error);
     }
 
     if (results.length === 0 || !(await bcrypt.compare(password, results[0].password))) {
@@ -109,7 +114,7 @@ const nodemailer = require('nodemailer');
   // Cherche l'utilisateur
   db.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) => {
     if (error) {
-      return res.status(500).json({ error });
+      return databaseError(res, error);
     }
 
     // Pour la sécurité, on dit pas si l'email existe ou pas
@@ -132,7 +137,7 @@ const nodemailer = require('nodemailer');
       [resetTokenHash, expiresAt, user.id],
       async (error) => {
         if (error) {
-          return res.status(500).json({ error });
+          return databaseError(res, error);
         }
 
         // ENVOIE L'EMAIL AVEC LE LIEN
@@ -183,7 +188,7 @@ const resetPassword = (req, res) => {
     [tokenHash],
     async (error, results) => {
       if (error) {
-        return res.status(500).json({ error });
+        return databaseError(res, error);
       }
 
       if (results.length === 0) {
@@ -199,7 +204,7 @@ const resetPassword = (req, res) => {
         [hashedPassword, user.id],
         (error) => {
           if (error) {
-            return res.status(500).json({ error });
+            return databaseError(res, error);
           }
 
           res.status(200).json({ message: "Mot de passe réinitialisé avec succès" });
@@ -213,7 +218,7 @@ const getProfile = (req, res) => {
     const userId = req.user.id;
 
     db.query('SELECT id, nom, email, role FROM users WHERE id = ?', [userId], (err, results) => {
-        if (err) return res.status(500).json({ err });
+        if (err) return databaseError(res, err);
         if (results.length === 0) return res.status(404).json({ error: "Utilisateur non trouvé" });
         res.json({ user: results[0] });
     });
@@ -237,7 +242,7 @@ const changePassword = async (req, res) => {
     }
 
     db.query('SELECT * FROM users WHERE id = ?', [userId], async (err, results) => {
-        if (err) return res.status(500).json({ err });
+        if (err) return databaseError(res, err);
         if (results.length === 0) return res.status(404).json({ error: "Utilisateur non trouvé" });
 
         const user = results[0];
@@ -248,7 +253,7 @@ const changePassword = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(newPassword, 8);
         db.query('UPDATE users SET password = ? WHERE id = ?', [hashedPassword, userId], (err) => {
-            if (err) return res.status(500).json({ err });
+            if (err) return databaseError(res, err);
             res.json({ message: "Mot de passe modifié avec succès" });
         });
     });
@@ -256,7 +261,7 @@ const changePassword = async (req, res) => {
 
 const getAllUsers = (req, res) => {
     db.query('SELECT id, nom, email, role, created_at FROM users ORDER BY created_at DESC', (err, results) => {
-        if (err) return res.status(500).json({ err });
+        if (err) return databaseError(res, err);
         res.json({ results });
     });
 };
