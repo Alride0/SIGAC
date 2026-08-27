@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 @import "./bases/variables.css";
 @import "./layout/sidebar.css";
 @import "./layout/navbar.css";
@@ -18,4 +19,96 @@
 @import "./pages/parametres.css";
 @import "./pages/auth.css";
 @import "./pages/login.css";
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+/* Système de champs cohérent : lisible, sobre et stable dans toute l'application. */
+.form-group > input:not([type="checkbox"]):not([type="radio"]),
+.form-group > select,
+.form-group > textarea,
+.filter-group > input,
+.filter-group > select,
+.search-input {
+  min-height: 50px;
+  border: 1.5px solid #e5ddd2;
+  border-radius: 12px;
+  background: #fff;
+  color: #2f1d1a;
+  font: inherit;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+
+.form-group > input:not([type="checkbox"]):not([type="radio"]),
+.form-group > select,
+.filter-group > input,
+.filter-group > select {
+  width: 100%;
+  padding: 0 .95rem;
+}
+
+.form-group > textarea {
+  width: 100%;
+  min-height: 110px;
+  padding: .8rem .95rem;
+  resize: vertical;
+}
+
+.search-input {
+  padding: 0 .95rem 0 2.8rem;
+}
+
+.form-group > input:not([type="checkbox"]):not([type="radio"]):hover,
+.form-group > select:hover,
+.filter-group > input:hover,
+.filter-group > select:hover,
+.search-input:hover,
+.login-form .input-wrapper:hover,
+.auth-form .input-wrapper:hover,
+.parametres-form .input-wrapper:hover {
+  border-color: #c8b59b;
+}
+
+.form-group > input:not([type="checkbox"]):not([type="radio"]):focus,
+.form-group > select:focus,
+.form-group > textarea:focus,
+.filter-group > input:focus,
+.filter-group > select:focus,
+.search-input:focus,
+.login-form .input-wrapper:focus-within,
+.auth-form .input-wrapper:focus-within,
+.parametres-form .input-wrapper:focus-within {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 4px rgba(247, 184, 1, .16);
+}
+
+.login-form .input-wrapper,
+.auth-form .input-wrapper,
+.parametres-form .input-wrapper {
+  min-height: 54px;
+  border: 1.5px solid #e5ddd2;
+  border-radius: 12px;
+  background: #fff;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.login-form input:-webkit-autofill,
+.login-form input:-webkit-autofill:hover,
+.login-form input:-webkit-autofill:focus,
+.auth-form input:-webkit-autofill,
+.parametres-form input:-webkit-autofill {
+  -webkit-text-fill-color: #2f1d1a;
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  box-shadow: 0 0 0 1000px #fff inset;
+  caret-color: #2f1d1a;
+}
+
+.login-container.dark .input-wrapper {
+  background: #222;
+  border-color: #444;
+}
+
+.login-container.dark input:-webkit-autofill {
+  -webkit-text-fill-color: #fff;
+  -webkit-box-shadow: 0 0 0 1000px #222 inset;
+  box-shadow: 0 0 0 1000px #222 inset;
+  caret-color: #fff;
+}

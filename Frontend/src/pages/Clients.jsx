@@ -161,7 +161,7 @@
         <input 
           type="text" 
           className="search-input" 
-          placeholder="Rechercher un client..." 
+          aria-label="Rechercher un client"
           value={searchTerm} 
           onChange={(e) => setSearchTerm(e.target.value)}
         />

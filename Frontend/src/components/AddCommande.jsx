@@ -114,7 +114,6 @@ const AddCommande = ({ clients, editingCommande, onCommandeAdded, onClose }) => 
               <label>Type de vêtement *</label>
               <input
                 type="text"
-                placeholder="Ex: Robe, Pantalon, Chemise..."
                 value={type_vetement}
                 onChange={(e) => setType_vetement(e.target.value)}
                 required
@@ -125,7 +124,6 @@ const AddCommande = ({ clients, editingCommande, onCommandeAdded, onClose }) => 
               <label>Description *</label>
               <input
                 type="text"
-                placeholder="Ex: Robe longue noire avec broderies..."
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 required
@@ -156,7 +154,6 @@ const AddCommande = ({ clients, editingCommande, onCommandeAdded, onClose }) => 
               <label>Montant (FCFA)</label>
               <input
                 type="number"
-                placeholder="Ex: 50000"
                 value={montant}
                 onChange={(e) => setMontant(e.target.value)}
               />

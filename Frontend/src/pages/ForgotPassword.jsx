@@ -53,7 +53,6 @@ const ForgotPassword = () => {
               <FiMail className="input-icon" size={18} />
               <input
                 type="email"
-                placeholder="Entrez votre adresse email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required

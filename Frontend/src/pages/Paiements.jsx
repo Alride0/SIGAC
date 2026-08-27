@@ -203,7 +203,6 @@ const Paiements = () => {
                     <label>Rechercher un paiement, client, commande...</label>
                     <input
                         type="text"
-                        placeholder="Rechercher..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />

@@ -75,7 +75,6 @@ const ResetPassword = () => {
               <FiLock className="input-icon" size={18} />
               <input
                 type={showPassword ? "text" : "password"}
-                placeholder="Entrez votre nouveau mot de passe"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -116,7 +115,6 @@ const ResetPassword = () => {
               <FiLock className="input-icon" size={18} />
               <input
                 type={showPasswordConfirm ? "text" : "password"}
-                placeholder="Confirmez votre mot de passe"
                 value={passwordConfirm}
                 onChange={(e) => setPasswordConfirm(e.target.value)}
                 required

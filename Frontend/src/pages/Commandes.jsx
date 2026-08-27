@@ -275,7 +275,6 @@ useEffect(() => {
           <label>Rechercher une commande, client...</label>
           <input
             type="text"
-            placeholder="Rechercher..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
