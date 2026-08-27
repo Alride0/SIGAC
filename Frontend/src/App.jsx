@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login.jsx';
 import ForgotPassword from './pages/ForgotPassword.jsx';
@@ -14,20 +15,20 @@ import Utilisateurs from './pages/Utilisateurs.jsx';
 import AdminRoute from './components/AdminRoute.jsx';
 import "./styles/index.css";
 const App = () => {
-  const isAuthenticated = !!localStorage.getItem('token');
+  const [isAuthenticated, setIsAuthenticated] = useState(() => !!localStorage.getItem('token'));
 
   return (
     <BrowserRouter>
       <Routes>
         {/* ROUTES PUBLIQUES (AuthLayout) */}
         <Route element={<AuthLayout />}>
-  <Route path="/login" element={<Login />} />
+  <Route path="/login" element={<Login onLogin={() => setIsAuthenticated(true)} />} />
   <Route path="/forgot-password" element={<ForgotPassword />} />
   <Route path="/reset-password/:token" element={<ResetPassword />} />
 </Route>
 
         {/* ROUTES PROTÉGÉES (AppLayout) */}
-        <Route element={isAuthenticated ? <AppLayout /> : <Navigate to="/login" />}>
+        <Route element={isAuthenticated ? <AppLayout onLogout={() => setIsAuthenticated(false)} /> : <Navigate to="/login" replace />}>
           <Route path="/" element={<AdminRoute> <Dashboard /> </AdminRoute>}/>
           <Route path="/clients" element={<Clients />} />
           <Route path="/mesures" element={<Mesures />} />

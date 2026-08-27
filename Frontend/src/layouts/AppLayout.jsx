@@ -3,7 +3,7 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { FiClipboard, FiCreditCard, FiHome, FiLogOut, FiMenu, FiScissors, FiSettings, FiUsers, FiX } from 'react-icons/fi';
 import '../global.css';
 
-const AppLayout = () => {
+const AppLayout = ({ onLogout }) => {
   const user = JSON.parse(localStorage.getItem('user') || '{}');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -23,6 +23,7 @@ const AppLayout = () => {
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    onLogout();
     navigate('/login');
   };
   const renderLinks = (items, className = 'nav-item') => items.map(({ to, label, icon: Icon, end }) => (

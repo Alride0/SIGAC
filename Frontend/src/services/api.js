@@ -14,4 +14,19 @@ api.interceptors.request.use((config) => {
     return config;
 });
 
+// L'API ne doit jamais pouvoir faire planter l'interface si elle renvoie une
+// erreur technique au format objet (par exemple une erreur de connexion MySQL).
+api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        const responseData = error.response?.data;
+
+        if (responseData && typeof responseData.error !== 'string') {
+            responseData.error = 'Le serveur rencontre un problème. Réessayez dans quelques instants.';
+        }
+
+        return Promise.reject(error);
+    }
+);
+
 export default api;

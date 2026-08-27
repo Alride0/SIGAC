@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {FiEye,FiEyeOff,FiLock,FiMail,FiUser,FiSun,FiMoon} from "react-icons/fi";
 import api from '../services/api.js';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -56,7 +56,8 @@ useEffect(() => {
         localStorage.removeItem('savedEmail');
       }
 
-      navigate('/');
+      onLogin();
+      navigate('/', { replace: true });
     } catch (error) {
       setError(error.response?.data?.error || "Erreur de connexion");
     } finally {
