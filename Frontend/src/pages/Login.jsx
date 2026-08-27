@@ -142,7 +142,6 @@ const t = texts[language];
 
                             <input
                                 type="text"
-                                placeholder={t.emailPlaceholder}
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
@@ -159,8 +158,7 @@ const t = texts[language];
 
                                 <input
                                     type={showPassword ? "text" : "password"}
-                                    placeholder={t.passwordPlaceholder}
-                                    value={password}
+                                value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
                                     autoComplete="new-password"

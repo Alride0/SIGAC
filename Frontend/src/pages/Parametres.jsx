@@ -101,7 +101,7 @@ const Parametres = () => {
                     {successMessage && <div className="success-message">{successMessage}</div>}
                     {errorMessage && <div className="error-message">{errorMessage}</div>}
 
-                    <form onSubmit={handleChangePassword} className="parametres-form">
+                    <form onSubmit={handleChangePassword} className="parametres-form" autoComplete="off">
                         <div className="form-group">
                             <label>Mot de passe actuel</label>
                             <div className="input-wrapper">
@@ -110,6 +110,8 @@ const Parametres = () => {
                                     type={showCurrent ? "text" : "password"}
                                     value={currentPassword}
                                     onChange={(e) => setCurrentPassword(e.target.value)}
+                                    name="current-password-change"
+                                    autoComplete="new-password"
                                 />
                                 <button type="button" className="password-toggle" onClick={() => setShowCurrent(!showCurrent)}>
                                     {showCurrent ? <FiEyeOff size={18} /> : <FiEye size={18} />}
@@ -125,6 +127,8 @@ const Parametres = () => {
                                     type={showNew ? "text" : "password"}
                                     value={newPassword}
                                     onChange={(e) => setNewPassword(e.target.value)}
+                                    name="new-password"
+                                    autoComplete="new-password"
                                 />
                                 <button type="button" className="password-toggle" onClick={() => setShowNew(!showNew)}>
                                     {showNew ? <FiEyeOff size={18} /> : <FiEye size={18} />}
@@ -140,6 +144,8 @@ const Parametres = () => {
                                     type={showNew ? "text" : "password"}
                                     value={newPasswordConfirm}
                                     onChange={(e) => setNewPasswordConfirm(e.target.value)}
+                                    name="new-password-confirmation"
+                                    autoComplete="new-password"
                                 />
                             </div>
                         </div>
